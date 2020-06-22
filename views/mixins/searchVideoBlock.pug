@@ -1,0 +1,21 @@
+mixin searchVideoBlock()
+    .search-videoblock
+        .search-column
+            video.video-result(src="https://www.w3schools.com/html/mov_bbb.mp4")
+        .search-column
+            a(href=routes.videoDetail(11))
+                h1.title Title
+            .search__info-sub
+                span.comments
+                    i.fas.fa-comment
+                    |   15
+                span.like
+                    i.fas.fa-heart
+                    |   23
+            .search__info-creator
+                a(href=routes.userDetail(222))
+                    img.creator-profile(src="https://source.unsplash.com/random")
+                span.creator-name Benjamin
+            p description
+
+

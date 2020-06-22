@@ -1,0 +1,26 @@
+extends ./layout/main
+include mixins/videoBlock
+
+block content
+    .profile
+        .profile__detail
+            img.detail__img(src="https://source.unsplash.com/random")
+            .detail__info
+                h1 nickname
+                button Edit
+        .profile__video
+            img.detail__img(src="https://source.unsplash.com/random")
+    .profile-videos
+        h1 History
+        ol.videos__list
+            +videoBlock()
+            +videoBlock()
+            +videoBlock()
+            +videoBlock()
+            +videoBlock()
+            +videoBlock()
+            +videoBlock()
+            +videoBlock()
+            +videoBlock()
+            +videoBlock()
+

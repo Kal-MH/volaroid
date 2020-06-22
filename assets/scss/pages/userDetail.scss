@@ -1,0 +1,50 @@
+.profile {
+  margin-top: 150px;
+  width: 100%;
+  display: flex;
+  padding-bottom: 30px;
+  border-bottom: 1px solid $black;
+  .profile__detail {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    img {
+      margin-bottom: 40px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+    }
+    .detail__info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      h1 {
+        font-size: 2em;
+        font-weight: 600;
+        margin-bottom: 25px;
+      }
+    }
+  }
+  .profile__video {
+    flex: 1.3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      object-fit: cover;
+      max-width: 650px;
+      max-height: 500px;
+    }
+  }
+}
+.profile-videos {
+  width: 100%;
+  margin-top: 50px;
+  h1 {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+  }
+}

@@ -1,0 +1,29 @@
+extends ./layout/main
+
+block content
+    .video-container
+        video.video(src="https://www.w3schools.com/html/mov_bbb.mp4", controls=true)
+        .video-info
+            .info__column
+                a(href=routes.userDetail(222))
+                    img.info__creator(src="https://source.unsplash.com/random")
+                .info__text
+                    form.text__title
+                        .title__box
+                            a(href=routes.videoDetail(11))
+                                h1 Title
+                            input.hidden(type="text", name="title")                     
+                        Button.title-editBtn(type="button") Edit
+                    a(href=routes.userDetail(222)) by
+                        span Jeremy
+        .video-sub
+            form.sub__description
+                .description__box
+                    p description
+                    textarea.hidden(name="description", required=true)
+                Button.description-editBtn(type="button") Edit
+            .sub
+                span.sub__views 633 views
+                span.sub__likes 
+                    i.fas.fa-heart
+                    |   62

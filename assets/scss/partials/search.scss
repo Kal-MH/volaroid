@@ -1,0 +1,32 @@
+.search-container {
+  position: fixed;
+  top: 15%;
+  right: -300px;
+  transition: transform 0.4s ease-in-out;
+  z-index: 3;
+  width: 300px;
+  height: 180px;
+  background-color: white;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  .search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+    h1 {
+      font-size: 1.5em;
+      opacity: 0.7;
+      margin-bottom: 20px;
+    }
+    form {
+      width: 100%;
+      input:first-child {
+        margin-right: 12px;
+      }
+    }
+  }
+}

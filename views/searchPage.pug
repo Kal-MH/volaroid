@@ -1,0 +1,8 @@
+extends ./layout/main
+include mixins/searchVideoBlock
+
+block content
+    .search-result
+        h1 Search by term
+    .search-list
+        +searchVideoBlock()

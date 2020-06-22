@@ -1,0 +1,14 @@
+extends ./layout/main
+
+block content
+    .upload-wrapper
+        .upload-image
+        .upload-info
+            h1 Upload
+            .upload
+                form.upload-form
+                    label(for="file") Video File
+                    input(type="file", id="file", name="videoFile", required=true, accept="video/*")
+                    input(type="text", name="title", placeholder="Title", required=true)
+                    textarea(name="description", placeholder="Description", required=true)
+                    input(type="submit", value="Upload")
