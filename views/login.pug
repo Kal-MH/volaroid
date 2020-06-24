@@ -6,9 +6,9 @@ block content
         .login-info
             h1 Login
             .login
-                form.login-form
+                form.login-form(action=routes.login, method="post")
                     input(type="email", name="email", placeholder="email", required=true)
-                    input(type="password", name="password1",placeholder="password", required=true)
+                    input(type="password", name="password",placeholder="password", required=true)
                     input(type="submit", value="Login")
                 .login__social
                     include ./partials/socialLogin

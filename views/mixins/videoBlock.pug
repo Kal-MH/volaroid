@@ -1,16 +1,17 @@
-mixin videoBlock()
+mixin videoBlock(video={}, user={})
     li.videoBlock
-        a(href=routes.videoDetail(11))
-            video.video-thumbnail(src="https://www.w3schools.com/html/mov_bbb.mp4")
+        a(href=routes.videoDetail(video.id))
+            video.video-thumbnail(src=video.src)
+        h1.video-title #{video.title}
         .info-container
             .info-creator
-                a(href=routes.userDetail(222))
-                    img.creator-profile(src="https://source.unsplash.com/random")
-                span.creator-name Benjamin
+                a(href=routes.userDetail(user.id))
+                    img.creator-profile(src=user.profile)
+                span.creator-name #{user.name}
             .info-sub
                 span.comments
                     i.fas.fa-comment
                 |   15
                 span.like
                     i.fas.fa-heart
-                |   23
+                |   #{video.views}

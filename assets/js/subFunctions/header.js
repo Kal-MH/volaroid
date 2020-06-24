@@ -15,11 +15,20 @@ const upIcon = document.querySelector(".window-up");
 
 const SHOW = "show";
 const HIDDEN = "hidden";
-const SLIDING = "sliding";
+const SLIDINGLOGGED = "slidingLogged";
+const SLIDINGUNLOGGED = "slidingUnlogged";
 const SLIDINGSEARCH = "slidingSearch";
+const LOGGEDBAR = "logged-bar";
+const UNLOGGEDBAR = "unlogged-bar";
 
 let menuClickOnset = 0;
 let searchClickOnset = 0;
+
+if (functions.length == 5) {
+  sideBar.classList.add(LOGGEDBAR);
+} else {
+  sideBar.classList.add(UNLOGGEDBAR);
+}
 
 //When you click loginspan in the header or login in the sidebar shows.
 const handleSearchClick = () => {
@@ -50,10 +59,18 @@ const handleUpClick = () => {
 //When you click the menu icon, sideBar shows.
 const handleMenuClickSliding = () => {
   if (menuClickOnset) {
-    sideBar.classList.remove(SLIDING);
+    if (functions.length == 5) {
+      sideBar.classList.remove(SLIDINGLOGGED);
+    } else {
+      sideBar.classList.remove(SLIDINGUNLOGGED);
+    }
     menuClickOnset = 0;
   } else {
-    sideBar.classList.add(SLIDING);
+    if (functions.length == 5) {
+      sideBar.classList.add(SLIDINGLOGGED);
+    } else {
+      sideBar.classList.add(SLIDINGUNLOGGED);
+    }
     menuClickOnset = 1;
   }
 };

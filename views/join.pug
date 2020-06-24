@@ -6,11 +6,11 @@ block content
         .join-info
             h1 Join
             .join
-                form.join-form
+                form.join-form(action=routes.join, method="post")
                     input(type="email", name="email", placeholder="email", required=true)
                     input(type="text", name="name", placeholder="name", required=true)
-                    input(type="password", name="password1",placeholder="password", required=true)
-                    input(type="password", name="password2",placeholder="verify password", required=true)
+                    input(type="password", name="password",placeholder="password", required=true)
+                    input(type="password", name="password1",placeholder="verify password", required=true)
                     input(type="submit", value="Join")
                 .join__social
                     include ./partials/socialLogin

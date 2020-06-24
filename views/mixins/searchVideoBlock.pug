@@ -1,21 +1,21 @@
-mixin searchVideoBlock()
+mixin searchVideoBlock(video={}, user={})
     .search-videoblock
         .search-column
-            video.video-result(src="https://www.w3schools.com/html/mov_bbb.mp4")
+            video.video-result(src=video.src)
         .search-column
-            a(href=routes.videoDetail(11))
-                h1.title Title
+            a(href=routes.videoDetail(video.id))
+                h1.title #{video.title}
             .search__info-sub
                 span.comments
                     i.fas.fa-comment
                     |   15
                 span.like
                     i.fas.fa-heart
-                    |   23
+                    |   #{video.views}
             .search__info-creator
-                a(href=routes.userDetail(222))
-                    img.creator-profile(src="https://source.unsplash.com/random")
-                span.creator-name Benjamin
-            p description
+                a(href=routes.userDetail(user.id))
+                    img.creator-profile(src=user.profile)
+                span.creator-name #{user.name}
+            p #{video.description}
 
 

@@ -4,23 +4,28 @@ include mixins/videoBlock
 block content
     .profile
         .profile__detail
-            img.detail__img(src="https://source.unsplash.com/random")
+            img.detail__img(src=user.profile)
             .detail__info
-                h1 nickname
+                h1 #{user.name}
+            if(loggedUser)
                 button Edit
         .profile__video
-            img.detail__img(src="https://source.unsplash.com/random")
+            video.detail__img(src=user.videos[0].src)
     .profile-videos
         h1 History
         ol.videos__list
-            +videoBlock()
-            +videoBlock()
-            +videoBlock()
-            +videoBlock()
-            +videoBlock()
-            +videoBlock()
-            +videoBlock()
-            +videoBlock()
-            +videoBlock()
-            +videoBlock()
-
+            each video in user.videos
+                +videoBlock(video, user)
+                +videoBlock(video, user)
+                +videoBlock(video, user)
+                +videoBlock(video, user)
+                +videoBlock(video, user)
+                +videoBlock(video, user)
+                +videoBlock(video, user)
+                +videoBlock(video, user)
+                +videoBlock(video, user)
+                +videoBlock(video, user)
+                +videoBlock(video, user)
+                +videoBlock(video, user)
+                +videoBlock(video, user)
+                +videoBlock(video, user)

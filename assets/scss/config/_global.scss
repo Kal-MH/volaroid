@@ -4,7 +4,10 @@
 .hidden {
   display: none;
 }
-.sliding {
+.slidingLogged {
+  transform: translateX(-290px);
+}
+.slidingUnlogged {
   transform: translateX(-170px);
 }
 .slidingSearch {

@@ -5,4 +5,5 @@ block content
     .search-result
         h1 Search by term
     .search-list
-        +searchVideoBlock()
+        each video in videos
+            +searchVideoBlock(video, user=video.creator)

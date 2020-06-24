@@ -3,19 +3,33 @@ header
         a(href=routes.home)
             i.fas.fa-film
     .header-column
-        a(href=routes.join)
-            span.header__join Join
-        a(href=routes.login)
-            span.header__login Login
+        if(!loggedUser)
+            a(href=routes.join)
+                span.header__join Join
+            a(href=routes.login)
+                span.header__login Login
+        else
+            a(href=`/video${routes.upload}`)
+                span.header__upload Upload
+            a(href=`/user${routes.me}`)
+                span.header__me Profile
+            a(href=routes.logout)
+                span.header__logout Logout
     .bar-container
         .side-bar
             span.menu__menu-icon
                 i.fas.fa-align-justify
-            //- span.menu__menu-up
-            //-     i.fas.fa-angle-up
             span.menu__search-icon
                 i.fas.fa-search
-            a(href=routes.join)
-                span.menu__join Join
-            a(href=routes.login)
-                span.menu__login Login
+            if(!loggedUser)
+                a(href=routes.join)
+                    span.menu__join Join
+                a(href=routes.login)
+                    span.menu__login Login
+            else
+                a(href=`/video${routes.upload}`)
+                    span.menu__upload Upload
+                a(href=`/user${routes.me}`)
+                    span.menu__me Profile
+                a(href=routes.logout)
+                    span.menu__logout Logout

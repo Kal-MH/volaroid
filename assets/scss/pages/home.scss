@@ -33,7 +33,7 @@
   margin-bottom: 50px;
   width: 100%;
   .header {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     font-weight: 600;
     font-size: 25px;
   }
@@ -47,6 +47,11 @@
   margin-bottom: 20px;
   .videoBlock {
     min-height: 200px;
+    .video-title {
+      margin-top: 10px;
+      font-size: 1.3em;
+      font-weight: 600;
+    }
     .video-thumbnail {
       object-fit: cover;
       width: 100%;
