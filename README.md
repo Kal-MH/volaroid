@@ -7,3 +7,12 @@ Cloning Youtube with NodeJS
 2. this
 
 - Arrow function에서는 this가 정의되지 않는다.
+
+3. multer
+
+- multer는 upload를 먼저하고, req를 채워준다.
+
+4. Cannot set headers after they are sent to the client
+
+- https://velog.io/@kim-macbook/Cannot-set-headers-after-they-are-sent-to-the-client
+- userController.js에서 user 객체 찾는 부분을 if문 안에 넣으니 해결.

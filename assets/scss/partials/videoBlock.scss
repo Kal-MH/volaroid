@@ -18,9 +18,11 @@ ol {
       justify-content: space-between;
       align-items: center;
       .info-creator {
-        display: flex;
-        align-items: center;
-        font-weight: 600;
+        a {
+          display: flex;
+          align-items: center;
+          font-weight: 600;
+        }
         img {
           margin-right: 5px;
           object-fit: cover;

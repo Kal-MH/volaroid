@@ -1,11 +1,18 @@
 import { videos } from "../db";
 import User from "../Models/User";
+import Video from "../Models/Video";
 import passport from "passport";
 import routes from "../routes";
 
-export const home = (req, res) => {
-  console.log(req.user);
+export const home = async (req, res) => {
   console.log(res.locals.loggedUser);
+  let videos;
+  try {
+    videos = await Video.find({}).populate("creator").sort({ createdAt: -1 });
+  } catch (error) {
+    console.log(error);
+    videos = {};
+  }
   res.render("home", { title: "Home", videos });
 };
 
@@ -34,4 +41,9 @@ export const postLogin = passport.authenticate("local-login", {
 
 export const getSearch = (req, res) => {
   res.render("searchPage", { title: "Search", videos });
+};
+
+export const logout = (req, res) => {
+  req.logout();
+  res.redirect(routes.home);
 };

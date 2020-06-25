@@ -4,28 +4,17 @@ include mixins/videoBlock
 block content
     .profile
         .profile__detail
-            img.detail__img(src=user.profile)
+            img.detail__img(src=`/${user.profile}`)
             .detail__info
                 h1 #{user.name}
+                h3 #{user.email}
             if(loggedUser)
-                button Edit
+                a(href=routes.userEdit(user.id))
+                    button Edit
         .profile__video
-            video.detail__img(src=user.videos[0].src)
+            video.detail__video(src=`/${user.videos[0].src}`, controls=true)
     .profile-videos
         h1 History
         ol.videos__list
             each video in user.videos
-                +videoBlock(video, user)
-                +videoBlock(video, user)
-                +videoBlock(video, user)
-                +videoBlock(video, user)
-                +videoBlock(video, user)
-                +videoBlock(video, user)
-                +videoBlock(video, user)
-                +videoBlock(video, user)
-                +videoBlock(video, user)
-                +videoBlock(video, user)
-                +videoBlock(video, user)
-                +videoBlock(video, user)
-                +videoBlock(video, user)
                 +videoBlock(video, user)

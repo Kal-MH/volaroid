@@ -7,6 +7,7 @@ import {
   getSearch,
   postLogin,
   postJoin,
+  logout,
 } from "../Controller/globalController";
 import passport from "passport";
 
@@ -26,5 +27,7 @@ globalRouter.get(routes.login, getLogin);
 globalRouter.post(routes.login, postLogin);
 
 globalRouter.get(routes.search, getSearch);
+
+globalRouter.get(routes.logout, logout);
 
 export default globalRouter;

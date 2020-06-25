@@ -1,0 +1,21 @@
+extends ./layout/main
+
+block content
+    .editProfile-wrapper
+        .editProfile-image
+        .editProfile-info
+            h1 Edit Profile
+            .editProfile
+                form.editProfile-form(action=routes.userEdit(user.id), method="post", enctype="multipart/form-data")
+                    label(for="profile") Profile Image
+                    input(type="file", name="profile", id="profile", accept="image/*")
+                    h3.editProfile-email #{user.email}
+                    input(type="text", name="name", value=user.name, required=true)
+                    input(type="submit", value="Edit")
+                form.changePassword-form(action=`/user${routes.userChangePassword}`, method="post")
+                    h3.changePassword-title Change Password
+                    .changePassword__input-box.hidden
+                        input(type="password", name="oldPassword",placeholder="old password", required=true)
+                        input(type="password", name="password",placeholder="new password", required=true)
+                        input(type="password", name="password1",placeholder="verify password", required=true)
+                        input(type="submit", value="Change Password")

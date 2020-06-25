@@ -2,28 +2,30 @@ extends ./layout/main
 
 block content
     .video-container
-        video.video(src="https://www.w3schools.com/html/mov_bbb.mp4", controls=true)
+        video.video(src=video.src, controls=true)
         .video-info
             .info__column
-                a(href=routes.userDetail(222))
-                    img.info__creator(src="https://source.unsplash.com/random")
+                a(href=routes.userDetail(user.id))
+                    img.info__creator(src=`/${user.profile}`)
                 .info__text
                     form.text__title
                         .title__box
-                            a(href=routes.videoDetail(11))
-                                h1 Title
-                            input.hidden(type="text", name="title")                     
-                        Button.title-editBtn(type="button") Edit
-                    a(href=routes.userDetail(222)) by
-                        span Jeremy
+                            a(href=routes.videoDetail(video.id))
+                                h1 #{video.title}
+                            input.hidden(type="text", name="title")
+                        if(userOnset)
+                            Button.title-editBtn(type="button") Edit
+                    a(href=routes.userDetail(user.id)) by
+                        span #{user.name} 
         .video-sub
             form.sub__description
                 .description__box
-                    p description
+                    p #{video.description}
                     textarea.hidden(name="description", required=true)
-                Button.description-editBtn(type="button") Edit
+                if(userOnset)
+                    Button.description-editBtn(type="button") Edit
             .sub
-                span.sub__views 633 views
+                span.sub__views #{video.views} views
                 span.sub__likes 
                     i.fas.fa-heart
-                    |   62
+                    |   #{video.comments.length}

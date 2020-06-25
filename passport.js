@@ -14,8 +14,10 @@ const loginFunction = (email, password, done) => {
     }
     user.comparePassword(password, (err, isMatch) => {
       if (err) return done(null, false);
-      console.log("Password is match");
-      return done(null, user);
+      console.log("Password match: " + isMatch);
+      if (isMatch) {
+        return done(null, user);
+      } else return done(null, false);
     });
     // if (!user.validPassword(password)) {
     //   return done(null, flase, { message: "Incorrect password." });

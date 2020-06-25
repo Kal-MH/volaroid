@@ -24,7 +24,10 @@ const VideoSchema = new mongoose.Schema({
       ref: "Comment",
     },
   ],
-  views: Number,
+  views: {
+    type: Number,
+    default: 0,
+  },
 });
 
 const model = mongoose.model("Video", VideoSchema);
