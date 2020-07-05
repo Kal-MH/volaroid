@@ -10,12 +10,13 @@ import {
   logout,
 } from "../Controller/globalController";
 import passport from "passport";
+import { onlyPublic, onlyPrivate } from "../middlewares";
 
 const globalRouter = express.Router();
 
 globalRouter.get(routes.home, home);
 
-globalRouter.get(routes.join, getJoin);
+globalRouter.get(routes.join, onlyPublic, getJoin);
 globalRouter.post(
   routes.join,
   postJoin,
@@ -23,11 +24,11 @@ globalRouter.post(
   postLogin
 );
 
-globalRouter.get(routes.login, getLogin);
+globalRouter.get(routes.login, onlyPublic, getLogin);
 globalRouter.post(routes.login, postLogin);
 
 globalRouter.get(routes.search, getSearch);
 
-globalRouter.get(routes.logout, logout);
+globalRouter.get(routes.logout, onlyPrivate, logout);
 
 export default globalRouter;

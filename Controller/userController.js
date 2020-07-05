@@ -1,8 +1,10 @@
 import User from "../Models/User";
 import routes from "../routes";
+import { getLikeVideos } from "./globalController";
 
 export const userProfile = async (req, res) => {
   let id;
+  let videos;
   if (req.user) {
     id = req.user._id;
   } else {
@@ -10,7 +12,12 @@ export const userProfile = async (req, res) => {
   }
   try {
     const user = await User.findById({ _id: id }).populate("videos");
-    res.render("userProfile", { title: "Profile", user });
+    if (req.user) {
+      videos = getLikeVideos(user.videos, req.user.likeVideos);
+    } else {
+      videos = getLikeVideos(user.videos, ["000"]);
+    }
+    res.render("userProfile", { title: "Profile", user, videos });
   } catch (error) {
     console.log(error);
     res.redirect(routes.home);

@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { NULL } from "node-sass";
 
 const VideoSchema = new mongoose.Schema({
   title: {
@@ -25,6 +26,10 @@ const VideoSchema = new mongoose.Schema({
     },
   ],
   views: {
+    type: Number,
+    default: 0,
+  },
+  likes: {
     type: Number,
     default: 0,
   },

@@ -14,6 +14,7 @@ import passport from "passport";
 import "./passport";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import apiRouter from "./Router/apiRouter";
 dotenv.config();
 
 const app = express();
@@ -48,5 +49,6 @@ app.use(localMiddlewares);
 app.use(routes.home, globalRouter);
 app.use(routes.video, videoRouter);
 app.use(routes.user, userRouter);
+app.use(routes.api, apiRouter);
 
 export default app;

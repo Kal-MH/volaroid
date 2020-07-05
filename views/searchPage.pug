@@ -3,7 +3,7 @@ include mixins/searchVideoBlock
 
 block content
     .search-result
-        h1 Search by term
+        h1 Search by #{term}
     .search-list
         each video in videos
             +searchVideoBlock(video, user=video.creator)

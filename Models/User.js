@@ -20,6 +20,7 @@ const UserSchema = new mongoose.Schema(
         ref: "Video",
       },
     ],
+    likeVideos: [{ $type: mongoose.Schema.Types.ObjectId, ref: "Video" }],
     githubId: Number,
     naverId: Number,
     password: String,

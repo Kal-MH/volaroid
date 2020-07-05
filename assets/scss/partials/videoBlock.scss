@@ -1,11 +1,17 @@
-ol {
+.main__video-list,
+.videos__list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
   gap: 35px;
   list-style: none;
   margin-bottom: 20px;
-  li {
+  .videoBlock {
     min-height: 200px;
+    .video-title {
+      margin-top: 10px;
+      font-size: 1.3em;
+      font-weight: 600;
+    }
     .video-thumbnail {
       object-fit: cover;
       width: 100%;

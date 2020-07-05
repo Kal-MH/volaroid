@@ -1,8 +1,8 @@
-mixin videoBlock(video={}, user={})
+mixin videoBlock(video={},user={})
     li.videoBlock
-        a(href=routes.videoDetail(video.id))
-            video.video-thumbnail(src=`/${video.src}`)
-            h1.video-title #{video.title}
+        a(href=routes.videoDetail(video.video.id))
+            video.video-thumbnail(src=`/${video.video.src}`)
+            h1.video-title #{video.video.title}
         .info-container
             .info-creator
                 a(href=routes.userDetail(user.id))
@@ -10,8 +10,13 @@ mixin videoBlock(video={}, user={})
                     span.creator-name #{user.name}
             .info-sub
                 span.comments
-                    i.fas.fa-comment
-                |   15
-                span.like
-                    i.fas.fa-heart
-                |   #{video.views}
+                    i.fas.fa-tv
+                |   #{video.video.views}
+                if(video.likeOnset)            
+                    span.like.likeClick
+                        i.fas.fa-heart
+                        span #{video.video.likes}
+                else
+                    span.like
+                        i.fas.fa-heart
+                        span #{video.video.likes}

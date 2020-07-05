@@ -30,6 +30,14 @@
         span {
           margin-right: 10px;
         }
+        .fit-space {
+          display: inline;
+          .like {
+            span {
+              margin-left: 5px;
+            }
+          }
+        }
       }
       .search__info-creator {
         display: flex;

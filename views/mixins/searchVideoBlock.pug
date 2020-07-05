@@ -1,17 +1,19 @@
 mixin searchVideoBlock(video={}, user={})
     .search-videoblock
         .search-column
-            video.video-result(src=video.src)
+            a(href=routes.videoDetail(video.id))
+                video.video-result(src=video.src)
         .search-column
             a(href=routes.videoDetail(video.id))
                 h1.title #{video.title}
             .search__info-sub
                 span.comments
-                    i.fas.fa-comment
-                    |   15
-                span.like
-                    i.fas.fa-heart
+                    i.fas.fa-tv
                     |   #{video.views}
+                .fit-space
+                    span.like
+                        i.fas.fa-heart
+                        span #{video.likes}
             .search__info-creator
                 a(href=routes.userDetail(user.id))
                     img.creator-profile(src=user.profile)

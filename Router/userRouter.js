@@ -7,14 +7,14 @@ import {
   postChangePassword,
   getMe,
 } from "../Controller/userController";
-import { uploadProfile } from "../middlewares";
+import { uploadProfile, onlyPrivate } from "../middlewares";
 
 const userRouter = express.Router();
 
 userRouter.get(routes.userDetail(), userProfile);
-userRouter.get(routes.me, userProfile);
+userRouter.get(routes.me, onlyPrivate, userProfile);
 
-userRouter.get(routes.userEdit(), getEditProfile);
+userRouter.get(routes.userEdit(), onlyPrivate, getEditProfile);
 userRouter.post(routes.userEdit(), uploadProfile, postEditProfile);
 
 userRouter.post(routes.userChangePassword, postChangePassword);

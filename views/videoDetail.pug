@@ -1,4 +1,5 @@
 extends ./layout/main
+include mixins/commentBlock
 
 block content
     .video-container
@@ -14,18 +15,61 @@ block content
                                 h1 #{video.title}
                             input.hidden(type="text", name="title")
                         if(userOnset)
-                            Button.title-editBtn(type="button") Edit
+                            button.title-editBtn(type="button") Edit
                     a(href=routes.userDetail(user.id)) by
-                        span #{user.name} 
+                        span #{user.name}
+            if(userOnset)
+                .delete-box
+                    span.delete-box__text Delete Video
+                    a.hidden(href=routes.videoDelete(video.id)) Y
+                    span.hidden   /  N 
         .video-sub
             form.sub__description
                 .description__box
                     p #{video.description}
                     textarea.hidden(name="description", required=true)
                 if(userOnset)
-                    Button.description-editBtn(type="button") Edit
+                    .description__btn-box
+                        button.description-editBtn(type="button") Edit
             .sub
-                span.sub__views #{video.views} views
-                span.sub__likes 
-                    i.fas.fa-heart
-                    |   #{video.comments.length}
+                if(video.views == 1) 
+                    span.sub__views #{video.views} view
+                else
+                    span.sub__views #{video.views} views
+                if(likeOnset)
+                    span.sub__likes.like.likeClick
+                        i.fas.fa-heart
+                        span #{video.likes}
+                else
+                    span.sub__likes.like
+                        i.fas.fa-heart
+                        span #{video.likes}
+        ol.video-comments
+            .comments__text
+                h3 Comments
+                if(video.comments.length === 1)
+                    span #{video.comments.length} comment
+                else
+                    span #{video.comments.length} comments
+            if(loggedUser)
+                form.comments__form
+                    .form__me
+                        img.creator__profile(src=`/${loggedUser.profile}`)
+                        span.creator__name #{loggedUser.name}
+                    textarea(name="comment", placeholder="I love this video...")
+                    button.comment-createBtn(type="button") Create
+            .comments__li-box
+                each comment in comments.reverse()
+                    +commentBlock(comment, creator=comment.creator)
+                //- li.comments__comment
+                //-     .comment__creator
+                //-         img.creator__profile(src="https://source.unsplash.com/random")
+                //-         span.creator__name Jeremy
+                //-     .comment__text
+                //-         p Hello
+                //- li.comments__comment
+                //-     .comment__creator
+                //-         img.creator__profile(src="https://source.unsplash.com/random")
+                //-         span.creator__name Jeremy
+                //-     .comment__text
+                //-         p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.

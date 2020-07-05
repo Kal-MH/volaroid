@@ -13,4 +13,4 @@ block content
             h1 Check out
         ol.main__video-list
             each video in videos
-                +videoBlock(video, user=video.creator)
+                +videoBlock(video, user=video.video.creator)
