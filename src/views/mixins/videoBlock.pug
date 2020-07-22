@@ -1,0 +1,24 @@
+mixin videoBlock(video={},user={})
+    li.videoBlock
+        .video-box
+            a(href=routes.videoDetail(video.video.id))
+                .video-box__container
+                    video.video-thumbnail(src=`${video.video.src}`)
+                h1.video-title #{video.video.title}
+        .info-container
+            .info-creator
+                a(href=routes.userDetail(user.id))
+                    img.creator-profile(src=`${user.profile}`)
+                    span.creator-name #{user.name}
+            .info-sub
+                span.comments
+                    i.fas.fa-tv
+                |   #{video.video.views}
+                if(video.likeOnset)            
+                    span.like.likeClick
+                        i.fas.fa-heart
+                        span #{video.video.likes}
+                else
+                    span.like
+                        i.fas.fa-heart
+                        span #{video.video.likes}

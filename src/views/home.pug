@@ -1,0 +1,19 @@
+extends ./layout/main
+include mixins/videoBlock
+
+block content
+    .hero
+        .hero__text-container
+            .hero__text
+                h1 Wetube
+                p Make something Cool.
+        .hero__image
+            img.hero__up(src="https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80")
+            img.hero__left(src="https://images.unsplash.com/photo-1528109966604-5a6a4a964e8d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=250&q=80")
+            img.hero__right(src="https://images.unsplash.com/photo-1551817958-c5b51e7b4a33?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=350&q=80")
+    .main
+        .header
+            h1 Check out
+        ol.main__video-list
+            each video in videos
+                +videoBlock(video, user=video.video.creator)

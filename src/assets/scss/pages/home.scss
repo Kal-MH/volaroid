@@ -1,0 +1,76 @@
+.hero {
+  margin-top: 100px;
+  position: relative;
+  width: 100%;
+  min-width: 800px;
+  max-width: 1025px;
+  min-height: 512px;
+  display: flex;
+  border: 1px solid $black;
+  .hero__text-container {
+    flex: 1;
+    .hero__text {
+      margin-left: 10%;
+      position: relative;
+      top: 30%;
+      h1 {
+        font-size: 500%;
+      }
+      p {
+        margin-top: 25px;
+        font-size: 130%;
+        opacity: 0.6;
+      }
+    }
+  }
+  .hero__image {
+    border-left: solid $black 1px;
+    background-color: $lightGreen;
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    img {
+      border-radius: 10px;
+      position: absolute;
+      transition: all 0.3s ease-in-out;
+      &:nth-child(1) {
+        top: -210px;
+        left: 60px;
+      }
+      &:nth-child(2) {
+        left: -20px;
+        bottom: -380px;
+      }
+      &:nth-child(3) {
+        right: -410px;
+        top: 140px;
+      }
+    }
+    &:hover {
+      img {
+        &:nth-child(1) {
+          top: -15px;
+          left: 60px;
+        }
+        &:nth-child(2) {
+          left: -5px;
+          bottom: -30px;
+        }
+        &:nth-child(3) {
+          right: -70px;
+          top: 230px;
+        }
+      }
+    }
+  }
+}
+.main {
+  margin-top: 70px;
+  margin-bottom: 50px;
+  width: 100%;
+  .header {
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 25px;
+  }
+}

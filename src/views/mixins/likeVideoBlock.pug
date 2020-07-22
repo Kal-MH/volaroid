@@ -1,0 +1,19 @@
+mixin likeVideoBlock(video={})
+    li.videoBlock
+            .video-box
+                a(href=routes.videoDetail(video.id))
+                    .video-box__container
+                        video.video-thumbnail(src=`${video.src}`)
+                    h1.video-title #{video.title}
+            .info-container
+                .info-creator
+                    a(href=routes.userDetail(video.creator.id))
+                        img.creator-profile(src=`${video.creator.profile}`)
+                        span.creator-name #{video.creator.name}
+                .info-sub
+                    span.comments
+                        i.fas.fa-tv
+                    |   #{video.views}          
+                    span.like.likeClick
+                        i.fas.fa-heart
+                        span #{video.likes}

@@ -4,8 +4,14 @@
   "description": "Cloning Youtube with NodeJS",
   "main": "index.js",
   "scripts": {
-    "dev:server": "nodemon --exec babel-node init.js --delay 2 --ignore styles.scss --ignore static",
-    "dev:assets": "cross-env WEBPACK_ENV=development webpack -w"
+    "dev:server": "nodemon --exec babel-node src/init.js --delay 2 --ignore styles.scss --ignore static",
+    "dev:assets": "cd src/assets && cross-env WEBPACK_ENV=development webpack -w",
+    "build:assets": "cd src/assets && cross-env WEBPACK_ENV=development webpack",
+    "build:server": "babel src --out-dir build --ignore 'src/assets' --ignore 'src/static' --ignore 'src/webpack.config.js'",
+    "copyAll": "XCOPY src\\static\\* build\\static\\* /e /h /k /y && XCOPY src\\views\\* build\\views\\* /e /h /k /y",
+    "prebuild": "rd /s /q \"build\"",
+    "build": "npm run build:server && npm run build:assets && npm run copyAll",
+    "start": "node build/init.js"
   },
   "repository": {
     "type": "git",
@@ -18,11 +24,13 @@
   },
   "homepage": "https://github.com/Kal-MH/volaroid#readme",
   "dependencies": {
+    "@babel/cli": "^7.10.5",
     "@babel/core": "^7.10.2",
     "@babel/node": "^7.10.1",
     "@babel/polyfill": "^7.10.1",
     "@babel/preset-env": "^7.10.2",
     "autoprefixer": "^9.8.0",
+    "aws-sdk": "^2.717.0",
     "axios": "^0.19.2",
     "babel-loader": "^8.1.0",
     "bcrypt": "^5.0.0",
@@ -39,9 +47,12 @@
     "mongoose": "^5.9.20",
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
+    "multer-s3": "^2.9.0",
     "node-sass": "^4.14.1",
     "passport": "^0.4.1",
+    "passport-github": "^1.1.0",
     "passport-local": "^1.0.0",
+    "passport-naver": "^1.0.6",
     "postcss-loader": "^3.0.0",
     "pug": "^3.0.0",
     "sass-loader": "^8.0.2",
