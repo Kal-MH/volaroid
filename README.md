@@ -16,3 +16,5 @@ Cloning Youtube with NodeJS
 
 - https://velog.io/@kim-macbook/Cannot-set-headers-after-they-are-sent-to-the-client
 - userController.js에서 user 객체 찾는 부분을 if문 안에 넣으니 해결.
+
+5. "copyAll": "shx XCOPY src\\static\\_ build\\static\\_ /e /h /k /y && shx XCOPY src\\views\\_ build\\views\\_ /e /h /k /y",
