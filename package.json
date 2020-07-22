@@ -8,8 +8,8 @@
     "dev:assets": "cd src/assets && cross-env WEBPACK_ENV=development webpack -w",
     "build:assets": "cd src/assets && cross-env WEBPACK_ENV=development webpack",
     "build:server": "babel src --out-dir build --ignore 'src/assets' --ignore 'src/static' --ignore 'src/webpack.config.js'",
-    "copyAll": "XCOPY src\\static\\* build\\static\\* /e /h /k /y && XCOPY src\\views\\* build\\views\\* /e /h /k /y",
-    "prebuild": "rd /s /q \"build\"",
+    "copyAll": "shx XCOPY src\\static\\* build\\static\\* /e /h /k /y && shx XCOPY src\\views\\* build\\views\\* /e /h /k /y",
+    "prebuild": "shx rd /s /q \"build\"",
     "build": "npm run build:server && npm run build:assets && npm run copyAll",
     "start": "node build/init.js"
   },
@@ -60,7 +60,8 @@
     "webpack-cli": "^3.3.11"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "shx": "^0.3.2"
   },
   "browserslist": [
     "cover 99.5%"
