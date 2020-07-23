@@ -22,6 +22,7 @@ passport.use(
         _json: { email, nickname: name, profile_image, id },
       } = profile;
       try {
+        console.log(name);
         const user = await User.findOne({ email });
         if (user) {
           user.naverId = id;
@@ -30,7 +31,7 @@ passport.use(
         } else {
           const newUser = await User.create({
             naverId: id,
-            name,
+            name: name ? name : "Anonymous",
             email,
             profile: profile_image,
           });
