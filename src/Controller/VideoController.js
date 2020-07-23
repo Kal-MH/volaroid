@@ -79,7 +79,9 @@ export const getDelete = async (req, res) => {
       throw Error();
     } else {
       let videos = creator.videos.filter((v) => v._id != video.id);
+      let likeVideos = creator.likeVideos.filter((v) => v != video.id);
       creator.videos = videos;
+      creator.likeVideos = likeVideos;
       creator.save();
 
       for (let i = 0; i < video.comments.length; i++) {

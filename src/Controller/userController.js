@@ -6,6 +6,7 @@ import { getLikeVideos } from "./globalController";
 export const userProfile = async (req, res) => {
   let id;
   let videos;
+  let likeVideos = [];
   if (req.user) {
     id = req.user._id;
   } else {
@@ -20,7 +21,6 @@ export const userProfile = async (req, res) => {
     } else {
       videos = getLikeVideos(user.videos, ["000"]);
     }
-    let likeVideos = [];
     for (let i = 0; i < user.likeVideos.length; i++) {
       const likevideo = await Video.findById(user.likeVideos[i]).populate(
         "creator"
