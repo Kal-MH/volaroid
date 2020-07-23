@@ -13,7 +13,9 @@ passport.use(
     {
       clientID: process.env.NAVERID,
       clientSecret: process.env.NAVERSECRET,
-      callbackURL: `http://localhost:${process.env.PORT}${routes.naverCallback}`,
+      callbackURL: process.env.PRODUCTION
+        ? `https://sleepy-shore-92977.herokuapp.com${routes.naverCallback}`
+        : `http://localhost:${process.env.PORT}${routes.naverCallback}`,
     },
     async function (_, __, profile, cb) {
       const {
@@ -47,7 +49,9 @@ passport.use(
     {
       clientID: process.env.GITHUBID,
       clientSecret: process.env.GITHUBSECRET,
-      callbackURL: `http://localhost:${process.env.PORT}${routes.githubCallback}`,
+      callbackURL: process.env.PRODUCTION
+        ? `https://sleepy-shore-92977.herokuapp.com${routes.githubCallback}`
+        : `http://localhost:${process.env.PORT}${routes.githubCallback}`,
     },
     async function (_, __, profile, cb) {
       const {
