@@ -6,3 +6,4 @@ import "./subFunctions/videoEdit";
 import "./subFunctions/changePassword";
 
 import "./api";
+import "./video";

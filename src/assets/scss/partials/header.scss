@@ -21,14 +21,16 @@ header {
 }
 
 .logged-bar {
-  right: -21%;
+  width: 325px;
+  right: -270px;
 }
 .unlogged-bar {
-  right: -12%;
+  width: 220px;
+  right: -160px;
 }
 .bar-container {
   position: fixed;
-  top: 9%;
+  top: 100px;
   height: 60px;
   padding: 5px 0;
   transition: transform 0.3s ease-in-out;

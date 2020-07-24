@@ -7,6 +7,8 @@ const likes = document.querySelectorAll(".like");
 
 const commentsList = document.querySelector(".video-comments");
 
+let commentCountSpan;
+
 let commentsForm;
 let commentInputBtn;
 
@@ -18,10 +20,31 @@ let commentEditInputBtns = [];
 
 let videoId = window.location.href.split("/video/")[1];
 
+//comment count span cnaging function
+const commentSpan = (createOrDelete) => {
+  commentCountSpan = document
+    .querySelector(".jscommentSpan")
+    .querySelectorAll("span");
+  const count = Number(commentCountSpan[0].innerText);
+
+  if (createOrDelete) {
+    //create is true
+    commentCountSpan[0].innerText = count + 1;
+  } else {
+    commentCountSpan[0].innerText = count - 1;
+  }
+  if (count === 0) {
+    commentCountSpan[1].innerText = " comment";
+  } else {
+    commentCountSpan[1].innerText = " comments";
+  }
+};
+
 //api Comment Delete
 const deleteCommentBox = (form) => {
   const parentLi = form.parentNode;
   parentLi.classList.add(HIDDEN);
+  commentSpan(0);
 };
 const deleteBtn = async (commentText, form) => {
   const curComment = commentText.innerText;
@@ -144,6 +167,7 @@ const setComment = (text, imgUrl, creatorName) => {
   li.appendChild(commentEditForm);
 
   liBox.prepend(li);
+  commentSpan(1);
 };
 
 const handleCommentBtn = (e) => {
@@ -176,9 +200,7 @@ const handleLikeClick = (e) => {
   const grandGrandMa = e.target.parentNode.parentNode.parentNode.parentNode;
   const a = grandGrandMa.firstChild.firstChild;
 
-  if (!videoId) {
-    videoId = a.href.split("/video/")[1];
-  }
+  videoId = a.href.split("/video/")[1];
   fetch(`/api/${videoId}/like`, {
     method: "POST",
   }).then((response) => {

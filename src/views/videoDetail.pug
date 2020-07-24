@@ -3,7 +3,7 @@ include mixins/commentBlock
 
 block content
     .video-container
-        video.video(src=video.src, controls=true)
+        video.video.jsVideo(src=video.src, controls=true)
         .video-info
             .info__column
                 a(href=routes.userDetail(user.id))
@@ -47,10 +47,13 @@ block content
         ol.video-comments
             .comments__text
                 h3 Comments
-                if(video.comments.length === 1)
-                    span #{video.comments.length} comment
-                else
-                    span #{video.comments.length} comments
+                .comment-spanColumn.jscommentSpan
+                    if(video.comments.length === 1)
+                        span #{video.comments.length} 
+                        span comment
+                    else
+                        span #{video.comments.length} 
+                        span comments
             if(loggedUser)
                 form.comments__form
                     .form__me

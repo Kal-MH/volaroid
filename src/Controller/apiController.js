@@ -9,9 +9,9 @@ export const apiLikes = async (req, res) => {
     const video = await Video.findById({ _id: id });
     const likeVideos = req.user.likeVideos;
 
-    let filteredVideo = likeVideos.filter((v) => v._id != video.id);
+    const likeIndex = likeVideos.indexOf(video.id);
 
-    if (filteredVideo.length === likeVideos.length) {
+    if (likeIndex <= -1) {
       video.likes += 1;
       video.save();
       req.user.likeVideos.push(video.id);
@@ -20,7 +20,7 @@ export const apiLikes = async (req, res) => {
     } else {
       video.likes -= 1;
       video.save();
-      req.user.likeVideos = filteredVideo;
+      req.user.likeVideos.splice(likeIndex, 1);
       req.user.save();
       res.status(400);
     }

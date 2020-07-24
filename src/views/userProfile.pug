@@ -16,7 +16,7 @@ block content
             h1 New Arrival!
             .video__recent
                 if(user.videos.length !== 0)
-                    video.detail__video(src=`${user.videos[0].src}`, controls=true)
+                    video.detail__video.jsDetailVideo(src=`${user.videos[0].src}`, controls=true)
     .profile-videos
         h1 History
         ol.videos__list

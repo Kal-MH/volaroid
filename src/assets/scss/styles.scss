@@ -67,3 +67,6 @@ a {
 .like {
   cursor: pointer;
 }
+video:focus {
+  outline: none;
+}
