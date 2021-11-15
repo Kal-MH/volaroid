@@ -1,20 +1,29 @@
-Cloning Youtube with NodeJS
+# Cloning Youtube with NodeJS (현재 서비스 중지)
 
-1. IncomingMessage
+### 사용한 스택
 
-- localStrategy에서 joinFunction으로 값을 넘겨받을 때, IncomingMessage로 넘겨받는다.
+- Node JS (express)
+- MongoDB & AWS S3(storage)
+- Pug(view)
 
-2. this
+### 기능 구현
 
-- Arrow function에서는 this가 정의되지 않는다.
+1. 사용자 기능
+   - 회원가입
+   - 로그인
+   - 프로필 편집
+2. 게시글 기능
+   - 올리기
+   - 편집하기
+   - 삭제하기
 
-3. multer
+### 추가 기능 정리
 
-- multer는 upload를 먼저하고, req를 채워준다.
-
-4. Cannot set headers after they are sent to the client
-
-- https://velog.io/@kim-macbook/Cannot-set-headers-after-they-are-sent-to-the-client
-- userController.js에서 user 객체 찾는 부분을 if문 안에 넣으니 해결.
-
-5. "copyAll": "shx XCOPY src\\static\\_ build\\static\\_ /e /h /k /y && shx XCOPY src\\views\\_ build\\views\\_ /e /h /k /y",
+1. 사용자 보안
+2. 배포 과정(실행가능한 코드로 변환)
+   - build:server : js코드를 ES6 이전 버전으로 변환하고 build폴더에 저장
+   - build:assets : 클라이언트 코드(프론트 코드) 빌드 -> 모든 코드가 한 줄로 압축되어 표현되는 것을 볼 수 있다.(대부분의 브라우저에서 이해할 수 있게)
+   - heroku에 서버 배포
+     - 주의사항 : heroku는 깃 히스토리를 보기 때문에 commit하지 않은 코드는 볼 수 없다.
+     - copyAll : view파일을 heroku에서도 build 파일 안으로 모두 copy한다.
+       - 리눅스 기반에 heroku에서 unix command를 사용하기 위해서 shx라는 모듈 사용
